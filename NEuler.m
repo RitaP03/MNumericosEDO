@@ -15,7 +15,7 @@
 %   Ana Rita Conceição Pessoa .: a2023112690@isec.pt 
 %   João Francisco de Matos Claro .: a21270422@isec.pt 
 %
-%   02/04/2024
+%   13/03/2024
 
 function y = NEuler(f,a,b,n,y0)
 h    = (b-a)/n;

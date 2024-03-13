@@ -2,7 +2,11 @@
 %Chamada de funções
 %   MenuMNPVI
 %
-%   12/03/2020 - ArménioCorreia .: armenioc@isec.pt 
+%   Autor: ArménioCorreia .: armenioc@isec.pt 
+%   Ana Rita Conceição Pessoa .: a2023112690@isec.pt 
+%   João Francisco de Matos Claro .: a21270422@isec.pt 
+%
+%   02/04/2024
 
 clear
 primeiraVez=1;
