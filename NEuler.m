@@ -12,13 +12,15 @@
 %   y(i+1) = y(i)+h*f(t(i),y(i)) , i =0,1,...,n-1
 %
 % Autor: Arménio Correia  | armenioc@isec.pt
-%   Ana Rita Conceição Pessoa .: a2023112690@isec.pt 
-%   João Francisco de Matos Claro .: a21270422@isec.pt 
+%   Ana Rita Conceição Pessoa - 2023112690
+%   João Francisco de Matos Claro - 2017010293
 %
 %   13/03/2024
 
 function y = NEuler(f,a,b,n,y0)
 h    = (b-a)/n;
+y = zeros(n+1);
+t = zeros(n+1);
 t(1) = a;
 y(1) = y0;
 for i=1:n

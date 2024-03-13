@@ -1,28 +1,28 @@
-% Interface de textp para os PVI
-% Aplicação dos Métodos Numéricos de Euler e de Runge-Kutta
-% Autor: Arménio Correia  .: armenioc@isec.pt
-%  Ana Rita Conceição Pessoa - 2023112690 
-%  João Francisco de Matos Claro - 2023112690 
-% Data : 13/03/2024
+% Interface de  para os PVI
+% AplicaÃ§Ã£o dos MÃ©todos NumÃ©ricos de Euler e de Runge-Kutta
+% Autor: ArmÃ©nio Correia  | armenioc@isec.pt
+%  Ana Rita ConceiÃ§Ã£o Pessoa .: a2023112690@isec.pt 
+%  JoÃ£o Francisco de Matos Claro .: a21270422@isec.pt 
+% Data : %   02/04/2024
 
 clear
 primeiraVez=1;
 opcao=1;
 while opcao ~= 9 
     clc
-    disp('------- MÉTODOS NUMÉRICOS PARA PVI ------')
+    disp('------- MÃ‰TODOS NUMÃ‰RICOS PARA PVI ------')
     disp(' ')
     if(~primeiraVez)
-        fprintf('1. Introduzir Parâmetros do PVI\n')     
-        fprintf('2. Método de Euler\n')
-        fprintf('3. Método de Euler Melhorado\n')
-        fprintf('4. Método de RK2"\n')
-        fprintf('5. Método de RK4\n')
+        fprintf('1. Introduzir ParÃ¢metros do PVI\n')     
+        fprintf('2. MÃ©todo de Euler\n')
+        fprintf('3. MÃ©todo de Euler Melhorado\n')
+        fprintf('4. MÃ©todo de RK2"\n')
+        fprintf('5. MÃ©todo de RK4\n')
         fprintf('6. ODE45\n')
-        fprintf('7. Método de Adams-Bashford\n')
-        fprintf('8. APLICAR OS 3 MÉTODOS EM SIMULTÂNEO\n')
+        fprintf('7. MÃ©todo de Adams-Bashford\n')
+        fprintf('8. APLICAR OS 3 MÃ‰TODOS EM SIMULTÃ‚NEO\n')
         fprintf('9. Terminar\n\n')
-        opcao=input('Opção: ');
+        opcao=input('OpÃ§Ã£o: ');
     else
         opcao=1;
         primeiraVez=0;
@@ -31,7 +31,7 @@ while opcao ~= 9
     y=[];
     switch opcao
         case 1
-            strF=input('\nIntroduza a função f(t,y) = ','s');
+            strF=input('\nIntroduza a funÃ§Ã£o f(t,y) = ','s');
             f=@(t,y) eval(vectorize(strF));
             while(1)
                 try
@@ -102,14 +102,14 @@ while opcao ~= 9
     if(~fst)
         if opcao<=9
             if(~isEmpty(y) && op ~=9)
-                fprintf('\nAproximações obtidas: \n');
+                fprintf('\nAproximaÃ§Ãµes obtidas: \n');
                 disp(y);
             end
             if op ~= 0
                 input('\nPrima uma tecla para continuar ...');
             end
         else
-            fprintf('\nOpção errada.');
+            fprintf('\nOpÃ§Ã£o errada.');
             input('\nPrima para continuar');
         end
     end
@@ -117,7 +117,7 @@ end
 
 function mostraGrafico(legenda)
     fprintf('Deseja visualizar o grafico? (y,n)\n');
-    ch=input('Opção: ', 's');
+    ch=input('OpÃ§Ã£o: ', 's');
     if strcmpi(ch,'y')
         h=(b-a)/n;
         t=a:h:b;

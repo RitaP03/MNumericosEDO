@@ -13,19 +13,20 @@
 %   y - vector das soluções aproximações
 %   y(i+2)=y(i+1)+(3/2)*f(t(i+1),y(i+1))-(1/2)*h*f(t(0),y(0));
 %
-% Autor: Arménio Correia  | armenioc@isec.pt
-%   Ana Rita Conceição Pessoa .: a2023112690@isec.pt 
-%   João Francisco de Matos Claro .: a21270422@isec.pt 
+% Autor: Arménio Correia  .: armenioc@isec.pt
+%   Ana Rita Conceição Pessoa - 2023112690
+%   João Francisco de Matos Claro - 2023112690
 %
 %   13/03/2024
 
 function y = AdamBashford(f,a,b,n,y0)
 h = (b-a)/n;
-t = zeros(1,n+1);
+t = zeros(n+1);
 t(1) = a;
 y(1) = y0;
 y(2) = NEuler(f,a,a+h,n,y0);
 for i=1:n
     y(i+2)=y(i+1)+(3/2)*f(t(i+1),y(i+1))-(1/2)*h*f(t(0),y(0));
     t(i+1)=t(i)+h;
+    t(i+2)=t(i+1)+h;
 end
