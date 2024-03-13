@@ -11,6 +11,8 @@
 %   y - vector das soluções aproximações
 %
 % Autor: Arménio Correia  .: armenioc@isec.pt
+%
+%   Trabalho realizado por:
 %   Ana Rita Conceição Pessoa - 2023112690 
 %   João Francisco de Matos Claro - 2017010293 
 %

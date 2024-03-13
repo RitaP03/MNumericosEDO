@@ -14,6 +14,8 @@
 %   y(i+2)=y(i+1)+(3/2)*f(t(i+1),y(i+1))-(1/2)*h*f(t(0),y(0));
 %
 % Autor: Arménio Correia  .: armenioc@isec.pt
+%
+%   Trabalho realizado por:
 %   Ana Rita Conceição Pessoa - 2023112690
 %   João Francisco de Matos Claro - 2023112690
 %
