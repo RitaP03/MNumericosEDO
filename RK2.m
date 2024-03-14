@@ -20,7 +20,7 @@
 
 
 function y = RK2(f,a,b,n,y0)
-h =(b-a)/n;
+h = (b-a)/n;
 t = a:h:b;
 y = zeros(1,n+1);
 y(1) = y0;

@@ -23,7 +23,9 @@
 
 function y = AdamBashford(f,a,b,n,y0)
 h = (b-a)/n;
-t = zeros(n+1);
+%Pré alocação de memória
+t = a:h:b;
+y = zeros(1,n+1);
 t(1) = a;
 y(1) = y0;
 y(2) = NEuler(f,a,a+h,n,y0);

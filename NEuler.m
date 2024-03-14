@@ -18,9 +18,9 @@
 %   13/03/2024
 
 function y = NEuler(f,a,b,n,y0)
-h    = (b-a)/n;
-y = zeros(n+1);
-t = zeros(n+1);
+h = (b-a)/n;
+y = zeros(1,n+1);
+t = a:h:b;
 t(1) = a;
 y(1) = y0;
 for i=1:n
