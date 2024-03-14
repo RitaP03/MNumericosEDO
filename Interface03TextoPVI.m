@@ -28,7 +28,7 @@ while opcao ~= 9
         primeiraVez=0;
     end
     
-    y=[];
+    y=uint16.empty;
     switch opcao
         case 1
             strF=input('\nIntroduza a função f(t,y) = ','s');
@@ -79,33 +79,43 @@ while opcao ~= 9
             end
         case 2 
             y=NEuler(f,a,b,n,y0);
-            mostraGrafico("Euler");
+            mostraGrafico("Euler", y, a, b, n);
         case 3
             %y=MEuler Melhorado
-            mostraGrafico("Euler Melhorado");
+            mostraGrafico("Euler Melhorado", y, a, b, n);
         case 4  
             %y=NRK2(f,a,b,n,y0); 
-            mostraGrafico("RK2");
+            mostraGrafico("RK2", y, a, b, n);
         case 5
-              %y=NRK4(f,a,b,n,y0);
-              mostraGrafico("RK4");
+            %y=NRK4(f,a,b,n,y0);
+            mostraGrafico("RK4", y, a, b, n);
         case 6
-              %y=Ode45
-              mostraGrafico("ode45");
+            [t, y]=ode45(f, [a b], y0);
+            fprintf('Deseja visualizar o grafico? (y,n)\n');
+            ch=input('Opção: ', 's');
+            if strcmpi(ch,'y')
+                hold on
+                plot (t,y);
+                legend("ode45");
+                hold off
+                grid on
+            else
+                fprintf('\nIntroduza y ou n\n');
+            end
         case 7
               y=AdamBashford(f,a,b,n,y0);
-              mostraGrafico("Adams-Bashfords");
+              mostraGrafico("Adams-Bashfords", y, a, b, n);
         case 8
               %y=MNumericosPVI(f,a,b,n,y0);
     end
 
-    if(~fst)
+    if(~primeiraVez)
         if opcao<=9
-            if(~isEmpty(y) && op ~=9)
+            if(isempty(y) ~= 1 && opcao ~=9)
                 fprintf('\nAproximações obtidas: \n');
-                disp(y);
+                disp(table(y));
             end
-            if op ~= 0
+            if opcao ~= 0
                 input('\nPrima uma tecla para continuar ...');
             end
         else
@@ -115,7 +125,7 @@ while opcao ~= 9
     end
 end
 
-function mostraGrafico(legenda)
+function mostraGrafico(legenda, y, a, b, n)
     fprintf('Deseja visualizar o grafico? (y,n)\n');
     ch=input('Opção: ', 's');
     if strcmpi(ch,'y')
