@@ -1,4 +1,4 @@
-% Interface de textp para os PVI
+% Interface de texto para os PVI
 % Aplicação dos Métodos Numéricos de Euler e de Runge-Kutta
 % Autor: Arménio Correia  .: armenioc@isec.pt
 %  Ana Rita Conceição Pessoa - 2023112690 
