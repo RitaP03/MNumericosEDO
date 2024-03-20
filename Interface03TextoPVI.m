@@ -8,6 +8,16 @@
 clear
 primeiraVez=1;
 opcao=1;
+%%debugging%%
+% primeiraVez=0;
+% strF = "-2*t*y";
+% f=@(t,y) eval(vectorize(strF));
+% a = 0;
+% b = 1.5;
+% n = 3;
+% y0 = 2;
+%%end debugging%%
+
 while opcao ~= 9 
     clc
     disp('------- MÉTODOS NUMÉRICOS PARA PVI ------')
@@ -98,7 +108,12 @@ while opcao ~= 9
             [t, y]=AdamBashford(f,a,b,n,y0);
             mostraGrafico("Adams-Bashfords", y, t);
         case 8
-            %y=MNumericosPVI(f,a,b,n,y0);
+            sExata=dsolve(['Dy=', strF], ['y(',num2str(a),')=',num2str(y0)]);
+              g=@(t) eval(vectorize(char(sExata)));
+              h=(b-a)/n;
+              t=a:h:b;
+              yExata=g(t);
+              mostraGrafico("Exata", yExata, t);
     end
 
     if(~primeiraVez)
@@ -119,13 +134,14 @@ while opcao ~= 9
     end
 end
 
-function mostraGrafico(legenda, y, t)
+function mostraGrafico(metodo, y, t)
+
     fprintf('Deseja visualizar o grafico? (y,n)\n');
     ch=input('Opção: ', 's');
     if strcmp(ch,'y')
         hold on
-        plot (t,y);
-        legend(legenda);
+        plot (t,y, 'DisplayName', metodo);
+        legend('location', 'best');
         hold off
         grid on
     else
