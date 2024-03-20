@@ -41,7 +41,8 @@ while opcao ~= 9
         case 1
             syms y(t)
             strF=input('\nIntroduza a função f(t,y) = ','s');
-            f=@(t,y) eval(vectorize(strF));
+            %f=@(t,y) eval(vectorize(strF));
+            f= str2func(vectorize(strcat('@(t,y)', " ", strF)));
             while(1)
                 try
                     %Limite inferior
@@ -108,12 +109,8 @@ while opcao ~= 9
             [t, y]=AdamBashford(f,a,b,n,y0);
             mostraGrafico("Adams-Bashfords", y, t);
         case 8
-            sExata=dsolve(['Dy=', strF], ['y(',num2str(a),')=',num2str(y0)]);
-              g=@(t) eval(vectorize(char(sExata)));
-              h=(b-a)/n;
-              t=a:h:b;
-              yExata=g(t);
-              mostraGrafico("Exata", yExata, t);
+            [t, y]=sExata(f,a,b,n,y0);
+            mostraGrafico("Exata", y, t);
     end
 
     if(~primeiraVez)
