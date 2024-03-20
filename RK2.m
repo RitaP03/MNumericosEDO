@@ -27,7 +27,7 @@
 % - b (o limite superior do intervalo)
 % - n (o número de passos) 
 % - y0 (o valor inicial)
-function y = RK2(f,a,b,n,y0)
+function [t, y] = RK2(f,a,b,n,y0)
 
 % Calcula o tamanho do passo h com base nos limites inferior e superior do 
 % intervalo a e b, e no número de passos n

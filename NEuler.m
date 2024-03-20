@@ -27,7 +27,7 @@
  % - os limites de integração a e b;
  % - o número de passos n;
  % - o valor inicial y0. 
-function y = NEuler (f, a, b, n, y0)   
+function [t, y] = NEuler (f, a, b, n, y0)   
 
 % Calcula o tamanho do passo h com base nos limites de integração e no 
 % número de passos.
@@ -36,9 +36,11 @@ h = (b-a) /n;
 % Inicializa os vetores para armazenar os valores das variáveis:
     % -> independentes (t) 
     % -> dependentes (y)
+t = zeros(1, n);
+y = zeros(1, n);
 % começando com os valores iniciais.
-t (1) = a;               
-y (1) = y0;
+t(1) = a;               
+y(1) = y0;
 
 % Início do loop para cada passo de integração.
 for i = 1:n

@@ -18,7 +18,7 @@
 %   Ana Rita Conceição Pessoa - 2023112690
 %   João Francisco de Matos Claro - 2017010293
 
-function y = NEulerMelhorado(f,a,b,n,y0)
+function [t, y] = NEulerMelhorado(f,a,b,n,y0)
 h = (b-a)/n;
 t = a:h:b; %preenche o t com valores de a a b com diferença de h
 y = zeros(1,n+1); %gera um array com valores de 0

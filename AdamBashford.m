@@ -26,7 +26,7 @@
 % - um intervalo [a, b]
 % - o número de passos n 
 % - o valor inicial y0
-function y = AdamBashford(f,a,b,n,y0)
+function [t, y] = AdamBashford(f,a,b,n,y0)
 
 % Calcula o tamanho do passo h 
 % com base no intervalo [a, b] e no número de passos n

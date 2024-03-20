@@ -25,7 +25,7 @@
 % - a e b, que são os limites do intervalo onde queremos resolver a equação
 % - n, que é o número de passos ou subdivisões desse intervalo
 % - y0, que é a condição inicial
-function y = RK4(f,a,b,n,y0)
+function [t, y] = RK4(f,a,b,n,y0)
 
 % Esta linha calcula o tamanho de cada passo de tempo h, 
 % dividindo a diferença entre b e a pelo número de passos n
