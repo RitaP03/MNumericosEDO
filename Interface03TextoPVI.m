@@ -28,7 +28,7 @@ while opcao ~= 9
         primeiraVez=0;
     end
     
-    y=uint16.empty;
+    y=uint8.empty;
     switch opcao
         case 1
             strF=input('\nIntroduza a função f(t,y) = ','s');
@@ -60,7 +60,6 @@ while opcao ~= 9
             while(1)
                 try
                     %Numero de intervalos
-                    %ex: [0 1.5], n=3 [0 0.5 1 1.5]
                     strN = input('\nValor para n: ','s');
                     n = str2num(strN);
                 catch
