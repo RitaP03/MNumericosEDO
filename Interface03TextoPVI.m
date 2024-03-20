@@ -16,7 +16,7 @@ while opcao ~= 9
         fprintf('1. Introduzir Parâmetros do PVI\n')     
         fprintf('2. Método de Euler\n')
         fprintf('3. Método de Euler Melhorado\n')
-        fprintf('4. Método de RK2"\n')
+        fprintf('4. Método de RK2\n')
         fprintf('5. Método de RK4\n')
         fprintf('6. ODE45\n')
         fprintf('7. Método de Adams-Bashford\n')
@@ -35,6 +35,7 @@ while opcao ~= 9
             f=@(t,y) eval(vectorize(strF));
             while(1)
                 try
+                    %Limite inferior
                     strA = input('\nValor para a: ','s');
                     a = str2num(strA);
                 catch
@@ -46,6 +47,7 @@ while opcao ~= 9
             end
             while(1)
                 try
+                    %Limite superior
                     strB = input('\nValor para b: ','s');
                     b = str2num(strB);
                 catch
@@ -57,6 +59,8 @@ while opcao ~= 9
             end
             while(1)
                 try
+                    %Numero de intervalos
+                    %ex: [0 1.5], n=3 [0 0.5 1 1.5]
                     strN = input('\nValor para n: ','s');
                     n = str2num(strN);
                 catch
@@ -81,13 +85,13 @@ while opcao ~= 9
             y=NEuler(f,a,b,n,y0);
             mostraGrafico("Euler", y, a, b, n);
         case 3
-            %y=MEuler Melhorado
+            y=NEulerMelhorado(f,a,b,n,y0);
             mostraGrafico("Euler Melhorado", y, a, b, n);
         case 4  
-            %y=NRK2(f,a,b,n,y0); 
+            y=RK2(f,a,b,n,y0); 
             mostraGrafico("RK2", y, a, b, n);
         case 5
-            %y=NRK4(f,a,b,n,y0);
+            y=RK4(f,a,b,n,y0);
             mostraGrafico("RK4", y, a, b, n);
         case 6
             [t, y]=ode45(f, [a b], y0);
@@ -113,7 +117,7 @@ while opcao ~= 9
         if opcao<=9
             if(isempty(y) ~= 1 && opcao ~=9)
                 fprintf('\nAproximações obtidas: \n');
-                disp(table(y));
+                disp(y);
             end
             if opcao ~= 0
                 input('\nPrima uma tecla para continuar ...');
