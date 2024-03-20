@@ -20,17 +20,16 @@ while opcao ~= 9
         fprintf('5. Método de RK4\n')
         fprintf('6. ODE45\n')
         fprintf('7. Método de Adams-Bashford\n')
-        fprintf('8. APLICAR OS 3 MÉTODOS EM SIMULTÂNEO\n')
+        fprintf('8. Solução Exata\n')
         fprintf('9. Terminar\n\n')
         opcao=input('Opção: ');
     else
         opcao=1;
-        primeiraVez=0;
     end
     
-    y=uint8.empty;
     switch opcao
         case 1
+            syms y(t)
             strF=input('\nIntroduza a função f(t,y) = ','s');
             f=@(t,y) eval(vectorize(strF));
             while(1)
@@ -81,42 +80,32 @@ while opcao ~= 9
                 end
             end
         case 2 
-            y=NEuler(f,a,b,n,y0);
-            mostraGrafico("Euler", y, a, b, n);
+            [t, y]=NEuler(f,a,b,n,y0);
+            mostraGrafico("Euler", y, t);
         case 3
-            y=NEulerMelhorado(f,a,b,n,y0);
-            mostraGrafico("Euler Melhorado", y, a, b, n);
+            [t, y]=NEulerMelhorado(f,a,b,n,y0);
+            mostraGrafico("Euler Melhorado", y, t);
         case 4  
-            y=RK2(f,a,b,n,y0); 
-            mostraGrafico("RK2", y, a, b, n);
+            [t, y]=RK2(f,a,b,n,y0); 
+            mostraGrafico("RK2", y, t);
         case 5
-            y=RK4(f,a,b,n,y0);
-            mostraGrafico("RK4", y, a, b, n);
+            [t, y]=RK4(f,a,b,n,y0);
+            mostraGrafico("RK4", y, t);
         case 6
             [t, y]=ode45(f, [a b], y0);
-            fprintf('Deseja visualizar o grafico? (y,n)\n');
-            ch=input('Opção: ', 's');
-            if strcmpi(ch,'y')
-                hold on
-                plot (t,y);
-                legend("ode45");
-                hold off
-                grid on
-            else
-                fprintf('\nIntroduza y ou n\n');
-            end
+            mostraGrafico("ode45", y, t)
         case 7
-              y=AdamBashford(f,a,b,n,y0);
-              mostraGrafico("Adams-Bashfords", y, a, b, n);
+            [t, y]=AdamBashford(f,a,b,n,y0);
+            mostraGrafico("Adams-Bashfords", y, t);
         case 8
-              %y=MNumericosPVI(f,a,b,n,y0);
+            %y=MNumericosPVI(f,a,b,n,y0);
     end
 
     if(~primeiraVez)
         if opcao<=9
-            if(isempty(y) ~= 1 && opcao ~=9)
+            if(opcao ~=9)
                 fprintf('\nAproximações obtidas: \n');
-                disp(y);
+                disp(table(t, y));
             end
             if opcao ~= 0
                 input('\nPrima uma tecla para continuar ...');
@@ -125,15 +114,15 @@ while opcao ~= 9
             fprintf('\nOpção errada.');
             input('\nPrima para continuar');
         end
+    else
+        primeiraVez=0;
     end
 end
 
-function mostraGrafico(legenda, y, a, b, n)
+function mostraGrafico(legenda, y, t)
     fprintf('Deseja visualizar o grafico? (y,n)\n');
     ch=input('Opção: ', 's');
-    if strcmpi(ch,'y')
-        h=(b-a)/n;
-        t=a:h:b;
+    if strcmp(ch,'y')
         hold on
         plot (t,y);
         legend(legenda);
