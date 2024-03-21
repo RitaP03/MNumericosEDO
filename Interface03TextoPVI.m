@@ -109,7 +109,7 @@ while opcao ~= 9
             [t, y]=AdamBashford(f,a,b,n,y0);
             mostraGrafico("Adams-Bashfords", y, t);
         case 8
-            [t, y]=sExata(f,a,b,n,y0);
+            [t, y]=sExata(strF,a,b,n,y0);
             mostraGrafico("Exata", y, t);
     end
 
@@ -132,7 +132,6 @@ while opcao ~= 9
 end
 
 function mostraGrafico(metodo, y, t)
-
     fprintf('Deseja visualizar o grafico? (y,n)\n');
     ch=input('Opção: ', 's');
     if strcmp(ch,'y')
