@@ -35,6 +35,8 @@ h = (b-a)/n;
 % Pré alocação de memória
 % Cria um vetor t contendo os pontos ao longo do intervalo [a, b] 
 % com intervalo h
+% Adams Bashforth retorna n+1 pontos
+b = b+h;
 t = a:h:b;
 
 % Inicializa um vetor y com zeros para armazenar as soluções
@@ -45,14 +47,14 @@ t(1) = a;
 y(1) = y0;
 
 % Usa o Método de Euler para estimar o segundo valor de y
-y(2) = NEuler(f,a,a+h,n,y0);
+[~,yEuler] = NEuler(f,a,a+h,1,y0);
+y(2) = yEuler(1);
 
 % Inicia um loop que itera de 1 até n
 for i=1:n
-    % Calcula os valores de y usando a fórmula do Método de Adams-Bashforth
-    y(i+2)=y(i+1)+(3/2)*f(t(i+1),y(i+1))-(1/2)*h*f(t(0),y(0));
+    y(i+2)=y(i+1)+(3/2)*f(t(i+1),y(i+1))-(1/2)*h*f(t(1),y(1));
 
-    % Atualiza os valores de t para o próximo passo
-    t(i+1)=t(i)+h;
-    t(i+2)=t(i+1)+h;
+    % % Atualiza os valores de t para o próximo passo
+    % t(i+1)=t(i)+h;
+    % t(i+2)=t(i+1)+h;
 end
