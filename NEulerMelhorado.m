@@ -24,5 +24,5 @@ t = a:h:b; %preenche o t com valores de a a b com diferença de h
 y = zeros(1,n+1); %gera um array com valores de 0
 y(1) = y0;
 for i=1:n
-    y(i+1) = y(i)+h*f(t(i),y(i));
+    y(i+1) = y(i)+(h/2)*f(t(i),y(i))+h*f(t(i),y(i));
 end

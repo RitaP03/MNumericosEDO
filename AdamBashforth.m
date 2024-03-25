@@ -1,6 +1,6 @@
 %AdamBashford  Método de Adams-Bashforth para ED/PVI.
 
-%   y = AdamBashford(f,a,b,n,y0) 
+%   y = AdamBashforth(f,a,b,n,y0) 
 %   Método de 2 passos numérico para a resolução de um PVI
 %   y'= f(t,y) com t=[a, b] e y(a)=y0 condição inicial  
 
@@ -26,7 +26,7 @@
 % - um intervalo [a, b]
 % - o número de passos n 
 % - o valor inicial y0
-function [t, y] = AdamBashford(f,a,b,n,y0)
+function [t, y] = AdamBashforth(f,a,b,n,y0)
 
 % Calcula o tamanho do passo h 
 % com base no intervalo [a, b] e no número de passos n
