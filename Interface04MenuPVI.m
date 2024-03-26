@@ -2,7 +2,11 @@
 %Chamada de funções
 %   MenuMNPVI
 %
-%   12/03/2020 - ArménioCorreia .: armenioc@isec.pt 
+%   Autor: ArménioCorreia .: armenioc@isec.pt 
+%   Ana Rita Conceição Pessoa - 2023112690
+%   João Francisco de Matos Claro - 2017010293 
+%
+%   02/04/2024
 
 clear
 primeiraVez=1;
@@ -33,8 +37,7 @@ while menuPVI~=5
               n=str2num(input('n = ','s'));
               y0=str2num(input('y0 = ','s'));
         case 2
-              sExata=dsolve(['Dy=', strF],...
-                            ['y(',num2str(a),')=',num2str(y0)]);
+              sExata=dsolve(['Dy=', strF], ['y(',num2str(a),')=',num2str(y0)]);
               g=@(t) eval(vectorize(char(sExata)));
               h=(b-a)/n;
               t=a:h:b;

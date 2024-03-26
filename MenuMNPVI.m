@@ -10,9 +10,13 @@
 %OUTPUT: 
 %   y - vector das soluções aproximações
 %
-% Autor: Arménio Correia  | armenioc@isec.pt
-%   Ana Rita Conceição Pessoa .: a2023112690@isec.pt 
-%   João Francisco de Matos Claro .: a21270422@isec.pt 
+% Autor: Arménio Correia  .: armenioc@isec.pt
+%
+%   Trabalho realizado por:
+%   Ana Rita Conceição Pessoa - 2023112690 
+%   João Francisco de Matos Claro - 2017010293 
+%
+%   02/04/2024
 
 function y=MenuMNPVI(f,a,b,n,y0)
 y=[];
