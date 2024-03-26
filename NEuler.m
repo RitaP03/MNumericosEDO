@@ -36,10 +36,9 @@ h = (b-a) /n;
 % Inicializa os vetores para armazenar os valores das variáveis:
     % -> independentes (t) 
     % -> dependentes (y)
-t = zeros(1, n);
+t = a:h:b;
 y = zeros(1, n);
-% começando com os valores iniciais.
-t(1) = a;               
+% começando com os valores iniciais.             
 y(1) = y0;
 
 % Início do loop para cada passo de integração.
@@ -47,6 +46,5 @@ for i = 1:n
    % Calcula as novas aproximações usando o Método de Euler e 
    % atualiza os valores de y e t para o próximo passo. 
     y(i+1) = y(i)+h*f(t(i), y(i));
-    t(i+1) = t(i)+h;
 % Finalização do loop.
 end

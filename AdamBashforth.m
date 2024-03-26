@@ -51,7 +51,7 @@ y(1) = y0;
 y(2) = yEuler(1);
 
 % Inicia um loop que itera de 1 até n
-for i=1:n
+for i=1:(n-1)
     y(i+2)=y(i+1)+(3/2)*f(t(i+1),y(i+1))-(1/2)*h*f(t(1),y(1));
 
     % % Atualiza os valores de t para o próximo passo

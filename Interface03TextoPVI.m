@@ -138,6 +138,8 @@ function mostraGrafico(metodo, y, t)
         hold on
         plot (t,y, 'DisplayName', metodo);
         legend('location', 'best');
+        xlabel('x');
+        ylabel('y');
         hold off
         grid on
     else
