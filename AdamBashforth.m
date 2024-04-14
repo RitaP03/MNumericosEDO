@@ -12,7 +12,7 @@
 
 %OUTPUTS: 
 %   y - vector das soluções aproximações
-%   y(i+2)=y(i+1)+(3/2)*f(t(i+1),y(i+1))-(1/2)*h*f(t(0),y(0));
+%   y(i+2)=y(i+1)+(3/2)*h*f(t(i+1),y(i+1))-(1/2)*h*f(t(0),y(0));
 
 % Autores: Arménio Correia  | armenioc@isec.pt
 %          Ana Rita Conceição Pessoa .: a2023112690@isec.pt 
@@ -48,11 +48,11 @@ y(1) = y0;
 
 % Usa o Método de Euler para estimar o segundo valor de y
 [~,yEuler] = NEuler(f,a,a+h,1,y0);
-y(2) = yEuler(1);
+y(2) = yEuler(2);
 
 % Inicia um loop que itera de 1 até n
 for i=1:(n-1)
-    y(i+2)=y(i+1)+(3/2)*f(t(i+1),y(i+1))-(1/2)*h*f(t(1),y(1));
+    y(i+2)=y(i+1)+(3/2)*h*f(t(i+1),y(i+1))-(1/2)*h*f(t(1),y(1));
 
     % % Atualiza os valores de t para o próximo passo
     % t(i+1)=t(i)+h;
