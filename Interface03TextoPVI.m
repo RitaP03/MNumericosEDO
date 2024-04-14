@@ -1,4 +1,4 @@
-% Interface de texto para os PVI
+ % Interface de texto para os PVI
 % Aplicação dos Métodos Numéricos de Euler e de Runge-Kutta
 % Autor: Arménio Correia  .: armenioc@isec.pt
 %  Ana Rita Conceição Pessoa - 2023112690 
@@ -8,15 +8,15 @@
 clear
 primeiraVez=1;
 opcao=1;
-%%debugging%%
-% primeiraVez=0;
-% strF = "-2*t*y";
-% f=@(t,y) eval(vectorize(strF));
-% a = 0;
-% b = 1.5;
-% n = 3;
-% y0 = 2;
-%%end debugging%%
+%debugging%%
+primeiraVez=0;
+strF = "y+exp(3*t)";
+f=@(t,y) eval(vectorize(strF));
+a = 1;
+b = 1.5;
+n = 5;
+y0 = 2;
+%end debugging%%
 
 while opcao ~= 9 
     clc
