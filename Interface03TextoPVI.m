@@ -103,7 +103,7 @@ while opcao ~= 9
             [t, y]=RK4(f,a,b,n,y0);
             mostraGrafico("RK4", y, t);
         case 6
-            [t, y]=ode45(f, [a b], y0);
+            [t, y]=ode45(f, t, y0);
             mostraGrafico("ode45", y, t)
         case 7
             [t, y]=AdamBashford(f,a,b,n,y0);
