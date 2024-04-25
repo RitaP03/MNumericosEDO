@@ -12,7 +12,7 @@
 %
 %OUTPUTS:
 %   y - vector das aproximações discretas da solução exacta
-%   y(i+1) = y(i)+h*f(t(i)y(i)), i = 0,1,2,...,n-1
+%   y(i+1) = y(i)+(h/2)*(f(t(i),y(i))+h*f(t(i),y(i))), i = 0,1,2,...,n-1
 %
 %   Trabalho realizado por:
 %   Ana Rita Conceição Pessoa - 2023112690
@@ -20,9 +20,11 @@
 
 function [t, y] = NEulerMelhorado(f,a,b,n,y0)
 h = (b-a)/n;
-t = a:h:b; %preenche o t com valores de a a b com diferença de h
-y = zeros(1,n+1); %gera um array com valores de 0
+t = a:h:b;
+
+y = zeros(1,n+1);
 y(1) = y0;
+
 for i=1:n
-    y(i+1) = y(i)+(h/2)*f(t(i),y(i))+h*f(t(i),y(i));
+    y(i+1) = y(i)+(h/2)*(f(t(i),y(i))+h*f(t(i),y(i)));
 end

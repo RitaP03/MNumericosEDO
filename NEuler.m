@@ -20,31 +20,15 @@
 %          João Francisco de Matos Claro .: a21270422@isec.pt 
 %
 %   02/04/2024
-
-
-% Definição da função NEuler que recebe: 
- % - uma função f;
- % - os limites de integração a e b;
- % - o número de passos n;
- % - o valor inicial y0. 
+ 
 function [t, y] = NEuler (f, a, b, n, y0)   
 
-% Calcula o tamanho do passo h com base nos limites de integração e no 
-% número de passos.
 h = (b-a) /n;   
-
-% Inicializa os vetores para armazenar os valores das variáveis:
-    % -> independentes (t) 
-    % -> dependentes (y)
 t = a:h:b;
-y = zeros(1, n);
-% começando com os valores iniciais.             
+
+y = zeros(1, n);      
 y(1) = y0;
 
-% Início do loop para cada passo de integração.
 for i = 1:n
-   % Calcula as novas aproximações usando o Método de Euler e 
-   % atualiza os valores de y e t para o próximo passo. 
     y(i+1) = y(i)+h*f(t(i), y(i));
-% Finalização do loop.
 end
