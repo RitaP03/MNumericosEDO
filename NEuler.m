@@ -20,13 +20,7 @@
 %          João Francisco de Matos Claro .: a21270422@isec.pt 
 %
 %   02/04/2024
-
-
-% Definição da função NEuler que recebe: 
- % - uma função f;
- % - os limites de integração a e b;
- % - o número de passos n;
- % - o valor inicial y0. 
+ 
 function [t, y] = NEuler (f, a, b, n, y0)   
 
 % Calcula o tamanho do passo h com base nos limites de integração e no 
